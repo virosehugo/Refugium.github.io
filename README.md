@@ -3,104 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Refügium - Download Oficial</title>
+    <title>Refügium - Baixe o Jogo Agora</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Reset de margens e configuração básica para todos os elementos */
+        /* Reset básico */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-        /* Configuração do fundo escuro da página */
         body {
-            background-color: #121212;
-            color: #ffffff;
+            /* Fonte principal para o corpo do texto */
+            font-family: 'Roboto', sans-serif;
+            color: #d0d0d0;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
+            /* IMAGEM DE FUNDO: Aqui está uma imagem de exemplo.
+               Para usar a sua, substitua o link dentro de url('') */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1598387993441-a364f854c3e1?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
-        /* Estilo do cabeçalho onde fica o nome do jogo */
-        header {
-            background-color: #0a0a0a;
-            padding: 30px 20px;
-            text-align: center;
-            border-bottom: 2px solid #2a2a2a;
-        }
-
-        header h1 {
-            font-size: 3rem;
-            letter-spacing: 4px;
-            color: #e0e0e0;
-            text-transform: uppercase;
-        }
-
-        /* Área central com a descrição e o botão */
-        main {
+        /* Container principal que centraliza o conteúdo na tela */
+        .main-container {
             flex: 1;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 50px 20px;
+            padding: 20px;
+        }
+
+        /* O "cartão" translúcido onde o conteúdo fica */
+        .content-box {
+            background-color: rgba(20, 20, 20, 0.85); /* Fundo escuro e transparente */
+            padding: 50px;
+            border-radius: 15px;
             text-align: center;
+            border: 2px solid #3a3a3a;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            max-width: 700px;
+            width: 100%;
+            /* Efeito de desfoque atrás do cartão (funciona em navegadores modernos) */
+            backdrop-filter: blur(5px);
         }
 
+        /* Estilo do Título (Nome do Jogo) */
+        .game-title {
+            font-family: 'Cinzel Decorative', serif; /* Fonte de fantasia */
+            font-size: 4rem;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 6px #000000;
+        }
+
+        /* Subtítulo (Tagline) */
+        .tagline {
+            font-size: 1.4rem;
+            color: #c62828; /* Vermelho sangue */
+            font-style: italic;
+            margin-bottom: 35px;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        /* Descrição do jogo */
         .game-description {
-            max-width: 600px;
-            margin-bottom: 50px;
-            line-height: 1.6;
-            font-size: 1.2rem;
-            color: #b3b3b3;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 45px;
         }
 
-        /* Estilo detalhado do botão de download */
+        /* Estilo do Botão de Download - Mais Épico */
         .download-btn {
-            background-color: #d32f2f; /* Cor vermelha para dar destaque */
+            display: inline-block;
+            background: linear-gradient(145deg, #d32f2f, #a61b1b);
             color: #ffffff;
             text-decoration: none;
-            padding: 18px 40px;
+            padding: 20px 55px;
             font-size: 1.5rem;
             font-weight: bold;
             border-radius: 8px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4);
+            border: 2px solid #7a0c0c;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(183, 28, 28, 0.5);
         }
 
-        /* Efeito de quando o mouse passa por cima do botão */
         .download-btn:hover {
-            background-color: #b71c1c;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(211, 47, 47, 0.6);
+            background: linear-gradient(145deg, #ff3f3f, #d32f2f);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(183, 28, 28, 0.7);
+            border-color: #ff3f3f;
         }
 
-        /* Estilo do rodapé */
+        /* Rodapé simples */
         footer {
-            background-color: #0a0a0a;
             text-align: center;
             padding: 20px;
             font-size: 0.9rem;
-            color: #666666;
-            border-top: 1px solid #2a2a2a;
+            color: #888;
+            background-color: rgba(0, 0, 0, 0.8);
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Refügium</h1>
-    </header>
+    <main class="main-container">
+        <div class="content-box">
+            <h1 class="game-title">Refügium</h1>
+            <p class="tagline">Sua jornada começa nas sombras.</p>
 
-    <main>
-        <p class="game-description">
-            Prepare-se para entrar neste universo. Clique no botão abaixo para baixar a versão mais recente e iniciar a sua jornada.
-        </p>
+            <p class="game-description">
+                Prepare-se para entrar neste universo sombrio. Clique no botão abaixo para baixar a versão mais recente e iniciar a sua jornada épica.
+            </p>
 
-        <a href="[#](https://drive.google.com/file/d/1ZYNtGWHmUBEySlYCIHHzKoVTnXf5xWre/view?usp=drive_link)" class="download-btn" target="_blank" rel="noopener noreferrer">
-            BAIXAR O JOGO
-        </a>
+            <a href="https://drive.google.com/file/d/1ZYNtGWHmUBEySlYCIHHzKoVTnXf5xWre/view?usp=drive_link" class="download-btn" target="_blank" rel="noopener noreferrer">
+                BAIXAR O JOGO
+            </a>
+        </div>
     </main>
 
     <footer>
