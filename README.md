@@ -98,7 +98,7 @@
             Prepare-se para entrar neste universo. Clique no botão abaixo para baixar a versão mais recente e iniciar a sua jornada.
         </p>
 
-        <a href="#" class="download-btn" target="_blank" rel="noopener noreferrer">
+        <a href="[#](https://drive.google.com/file/d/1ZYNtGWHmUBEySlYCIHHzKoVTnXf5xWre/view?usp=drive_link)" class="download-btn" target="_blank" rel="noopener noreferrer">
             BAIXAR O JOGO
         </a>
     </main>
