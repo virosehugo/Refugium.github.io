@@ -45,24 +45,27 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
             max-width: 700px;
             width: 100%;
-            /* Efeito de desfoque atrás do cartão (funciona em navegadores modernos) */
             backdrop-filter: blur(5px);
+            /* Garante que o conteúdo não ultrapasse a caixa */
+            overflow-wrap: break-word; 
         }
 
-        /* Estilo do Título (Nome do Jogo) */
+        /* Estilo do Título (Nome do Jogo) - COM TAMANHO ELÁSTICO */
         .game-title {
             font-family: 'Cinzel Decorative', serif; /* Fonte de fantasia */
-            font-size: 4rem;
+            /* A função clamp define: (tamanho mínimo, tamanho ideal baseado na tela, tamanho máximo) */
+            font-size: clamp(1.8rem, 10vw, 4rem); 
             color: #ffffff;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             margin-bottom: 10px;
             text-shadow: 3px 3px 6px #000000;
+            line-height: 1.1;
         }
 
         /* Subtítulo (Tagline) */
         .tagline {
-            font-size: 1.4rem;
+            font-size: clamp(1.1rem, 4vw, 1.4rem);
             color: #c62828; /* Vermelho sangue */
             font-style: italic;
             margin-bottom: 35px;
@@ -76,7 +79,7 @@
             margin-bottom: 45px;
         }
 
-        /* Estilo do Botão de Download - Mais Épico */
+        /* Estilo do Botão de Download */
         .download-btn {
             display: inline-block;
             background: linear-gradient(145deg, #d32f2f, #a61b1b);
@@ -105,6 +108,9 @@
             margin-top: 40px;
             padding-top: 20px;
             border-top: 1px solid #3a3a3a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .audio-player-container p {
@@ -114,7 +120,7 @@
             font-style: italic;
         }
 
-        /* Customiza o player de áudio para não ficar tão claro no tema escuro */
+        /* Customiza o player de áudio */
         audio {
             width: 100%;
             max-width: 300px;
@@ -133,17 +139,7 @@
         /* RESPONSIVIDADE PARA TELEMÓVEIS (ECRÃS MENORES) */
         @media (max-width: 768px) {
             .content-box {
-                padding: 30px 20px; /* Reduz o espaçamento interno */
-            }
-
-            .game-title {
-                font-size: 2.2rem; /* Reduz o tamanho da letra para caber no ecrã */
-                letter-spacing: 1px;
-            }
-
-            .tagline {
-                font-size: 1.1rem;
-                margin-bottom: 25px;
+                padding: 30px 15px; /* Reduz o espaçamento interno lateral */
             }
 
             .game-description {
@@ -152,9 +148,10 @@
             }
 
             .download-btn {
-                padding: 15px 30px; /* Adapta o botão para ficar proporcional */
+                padding: 15px 20px; 
                 font-size: 1.2rem;
-                display: block; /* Garante que o botão não ultrapassa as margens laterais */
+                display: block; 
+                width: 100%; /* Faz o botão preencher a largura no celular */
             }
         }
     </style>
@@ -176,7 +173,7 @@
 
             <div class="audio-player-container">
                 <p>Trilha Sonora Oficial</p>
-                <audio controls loop autoplay src="trilha1.mp3">
+                <audio controls loop autoplay src="trilha1.mp3?v=1">
                     Seu navegador não suporta o elemento de áudio.
                 </audio>
             </div>
@@ -185,7 +182,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 Rorinaldo. Todos os direitos reservados.</p>
+        <p>&copy; 2026 Refügium. Todos os direitos reservados.</p>
     </footer>
 
 </body>
