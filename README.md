@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -21,7 +20,7 @@
             flex-direction: column;
             /* IMAGEM DE FUNDO: Aqui está uma imagem de exemplo.
                Para usar a sua, substitua o link dentro de url('') */
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1598387993441-a364f854c3e1?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('https://drive.google.com/file/d/1YSjxrq_64J9psXovoDsVKLutuFlZFhTK/view');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
