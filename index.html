@@ -100,6 +100,27 @@
             border-color: #ff3f3f;
         }
 
+        /* Estilo para a área da música */
+        .audio-player-container {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #3a3a3a;
+        }
+
+        .audio-player-container p {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        /* Customiza o player de áudio para não ficar tão claro no tema escuro */
+        audio {
+            width: 100%;
+            max-width: 300px;
+            outline: none;
+        }
+
         /* Rodapé simples */
         footer {
             text-align: center;
@@ -107,6 +128,34 @@
             font-size: 0.9rem;
             color: #888;
             background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* RESPONSIVIDADE PARA TELEMÓVEIS (ECRÃS MENORES) */
+        @media (max-width: 768px) {
+            .content-box {
+                padding: 30px 20px; /* Reduz o espaçamento interno */
+            }
+
+            .game-title {
+                font-size: 2.2rem; /* Reduz o tamanho da letra para caber no ecrã */
+                letter-spacing: 1px;
+            }
+
+            .tagline {
+                font-size: 1.1rem;
+                margin-bottom: 25px;
+            }
+
+            .game-description {
+                font-size: 1rem;
+                margin-bottom: 30px;
+            }
+
+            .download-btn {
+                padding: 15px 30px; /* Adapta o botão para ficar proporcional */
+                font-size: 1.2rem;
+                display: block; /* Garante que o botão não ultrapassa as margens laterais */
+            }
         }
     </style>
 </head>
@@ -124,11 +173,19 @@
             <a href="https://drive.google.com/file/d/1ZYNtGWHmUBEySlYCIHHzKoVTnXf5xWre/view?usp=drive_link" class="download-btn" target="_blank" rel="noopener noreferrer">
                 BAIXAR O JOGO
             </a>
+
+            <div class="audio-player-container">
+                <p>Trilha Sonora Oficial</p>
+                <audio controls loop autoplay src="https://drive.google.com/file/d/1ma3qTiO-3Jn0pSB2StDukIr8hCOAyMui/view?usp=drive_link">
+                    Seu navegador não suporta o elemento de áudio.
+                </audio>
+            </div>
+
         </div>
     </main>
 
     <footer>
-        <p>&copy; 2026 Rorinaldo. Todos os direitos reservados.</p>
+        <p>&copy; 2026 Refügium. Todos os direitos reservados.</p>
     </footer>
 
 </body>
