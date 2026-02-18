@@ -20,7 +20,7 @@
             flex-direction: column;
             /* IMAGEM DE FUNDO: Aqui está uma imagem de exemplo.
                Para usar a sua, substitua o link dentro de url('') */
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('https://drive.google.com/file/d/1YSjxrq_64J9psXovoDsVKLutuFlZFhTK/view');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),<a href='https://postimg.cc/rKHzH7pZ' target='_blank'><img src='https://i.postimg.cc/qvJnNTHr/Cidade-Dia.png' border='0' alt='Cidade-Dia'></a>;
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
