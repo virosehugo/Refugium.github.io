@@ -76,18 +76,10 @@
         .game-description {
             font-size: 1.1rem;
             line-height: 1.7;
-            margin-bottom: 35px;
+            margin-bottom: 45px;
         }
 
-        /* Container para alinhar os botões */
-        .buttons-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px; /* Espaço entre os botões */
-            align-items: center;
-        }
-
-        /* Estilo do Botão de Download Principal */
+        /* Estilo do Botão de Download */
         .download-btn {
             display: inline-block;
             background: linear-gradient(145deg, #d32f2f, #a61b1b);
@@ -102,8 +94,6 @@
             letter-spacing: 1px;
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(183, 28, 28, 0.5);
-            width: 100%;
-            max-width: 400px;
         }
 
         .download-btn:hover {
@@ -111,30 +101,6 @@
             transform: translateY(-4px);
             box-shadow: 0 8px 25px rgba(183, 28, 28, 0.7);
             border-color: #ff3f3f;
-        }
-
-        /* Estilo do Botão do Painel de Login (Secundário) */
-        .login-btn {
-            display: inline-block;
-            background: transparent;
-            color: #aaa;
-            text-decoration: none;
-            padding: 12px 30px;
-            font-size: 1rem;
-            font-weight: bold;
-            border-radius: 8px;
-            border: 1px solid #555;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            width: 100%;
-            max-width: 300px;
-        }
-
-        .login-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            border-color: #888;
         }
 
         /* Estilo para a área da música */
@@ -173,21 +139,19 @@
         /* RESPONSIVIDADE PARA TELEMÓVEIS (ECRÃS MENORES) */
         @media (max-width: 768px) {
             .content-box {
-                padding: 30px 15px; 
+                padding: 30px 15px; /* Reduz o espaçamento interno lateral */
             }
 
             .game-description {
                 font-size: 1rem;
-                margin-bottom: 25px;
+                margin-bottom: 30px;
             }
 
             .download-btn {
                 padding: 15px 20px; 
                 font-size: 1.2rem;
-            }
-            
-            .login-btn {
-                padding: 12px 20px;
+                display: block; 
+                width: 100%; /* Faz o botão preencher a largura no celular */
             }
         }
     </style>
@@ -203,15 +167,9 @@
                 Prepare-se para entrar neste universo sombrio. Clique no botão abaixo para baixar a versão mais recente e iniciar a sua jornada épica.
             </p>
 
-            <div class="buttons-container">
-                <a href="https://drive.google.com/file/d/1ZYNtGWHmUBEySlYCIHHzKoVTnXf5xWre/view?usp=drive_link" class="download-btn" target="_blank" rel="noopener noreferrer">
-                    BAIXAR O JOGO
-                </a>
-
-                <a href="painel.html" class="login-btn">
-                    Painel do Jogador
-                </a>
-            </div>
+            <a href="https://drive.google.com/file/d/1ZYNtGWHmUBEySlYCIHHzKoVTnXf5xWre/view?usp=drive_link" class="download-btn" target="_blank" rel="noopener noreferrer">
+                BAIXAR O JOGO
+            </a>
 
             <div class="audio-player-container">
                 <p>Trilha Sonora Oficial</p>
