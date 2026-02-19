@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refügium - O Grimório</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #d0d0d0;
+            background-color: #050505;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Fundo escuro e imersivo */
+        .background-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.95)), url('https://i.postimg.cc/qvJnNTHr/Cidade-Dia.png');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+
+        /* Cabeçalho da Wiki */
+        header {
+            text-align: center;
+            padding: 40px 20px 20px;
+        }
+
+        .wiki-title {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 3px 3px 6px #000000, 0 0 20px rgba(198, 40, 40, 0.5);
+            margin-bottom: 10px;
+        }
+
+        .wiki-subtitle {
+            font-size: 1.2rem;
+            color: #c62828;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        /* Botão de Voltar */
+        .back-btn {
+            display: inline-block;
+            background: transparent;
+            color: #aaa;
+            text-decoration: none;
+            padding: 10px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            border: 1px solid #555;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: rgba(198, 40, 40, 0.2);
+            color: #fff;
+            border-color: #c62828;
+        }
+
+        /* Estrutura das Sessões do Carrossel */
+        .section-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        .section-title {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2rem;
+            color: #fff;
+            border-bottom: 2px solid #c62828;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        /* Design do Carrossel */
+        .carousel-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 20px 0;
+            scrollbar-width: none; /* Esconde barra no Firefox */
+        }
+
+        .carousel-track::-webkit-scrollbar {
+            display: none; /* Esconde barra no Chrome/Safari */
+        }
+
+        /* Design das Cartas */
+        .card {
+            flex: 0 0 auto;
+            width: 250px;
+            height: 350px;
+            background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+            border: 1px solid #333;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 15px;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: #c62828;
+            box-shadow: 0 15px 30px rgba(198, 40, 40, 0.3);
+        }
+
+        /* Efeito de brilho no fundo da carta */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0) 70%);
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+
+        .card img {
+            max-width: 100%;
+            max-height: 250px;
+            object-fit: contain;
+            z-index: 1;
+            margin-bottom: 15px;
+            /* Filtro para dar clima sombrio */
+            filter: drop-shadow(0 10px 10px rgba(0,0,0,0.8));
+        }
+
+        .card h3 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.2rem;
+            color: #fff;
+            text-align: center;
+            z-index: 1;
+            width: 100%;
+            padding-top: 10px;
+            border-top: 1px solid #333;
+        }
+
+        /* Cores Específicas para Monstros vs Classes */
+        .monster-card:hover {
+            border-color: #4caf50; /* Verde pântano para monstros */
+            box-shadow: 0 15px 30px rgba(76, 175, 80, 0.2);
+        }
+
+        /* Botões Navegação Carrossel */
+        .nav-btn {
+            background: rgba(20, 20, 20, 0.8);
+            color: #fff;
+            border: 1px solid #444;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            position: absolute;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: #c62828;
+            border-color: #ff5252;
+        }
+
+        .prev-btn { left: -20px; }
+        .next-btn { right: -20px; }
+
+        /* Rodapé */
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9rem;
+            color: #666;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-top: 1px solid #222;
+        }
+
+        @media (max-width: 768px) {
+            .prev-btn { left: 0; }
+            .next-btn { right: 0; }
+            .card { width: 220px; height: 320px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background-wrapper"></div>
+
+    <header>
+        <h1 class="wiki-title">O Grimório</h1>
+        <p class="wiki-subtitle">Conheça as lendas e perigos de Refügium</p>
+        <a href="index.html" class="back-btn">← Voltar para a Taverna</a>
+    </header>
+
+    <main>
+        <section class="section-container">
+            <h2 class="section-title">Os Heróis</h2>
+            <div class="carousel-wrapper">
+                <button class="nav-btn prev-btn" onclick="scrollCarousel('classes-track', -300)">&#10094;</button>
+                
+                <div class="carousel-track" id="classes-track">
+                    <div class="card">
+                        <img src="https://i.postimg.cc/W184kk1C/Assassinom1.png" alt="Assassino">
+                        <h3>Assassino</h3>
+                    </div>
+                    <div class="card">
+                        <img src="https://i.postimg.cc/rmBykGf0/Guerreirom1.png" alt="Guerreiro">
+                        <h3>Guerreiro</h3>
+                    </div>
+                    <div class="card">
+                        <img src="https://i.postimg.cc/qq2JMtFc/Magom1.png" alt="Mago">
+                        <h3>Mago</h3>
+                    </div>
+                    <div class="card">
+                        <img src="https://i.postimg.cc/v8nHvjmg/Sacerdotem1.png" alt="Sacerdote">
+                        <h3>Sacerdote</h3>
+                    </div>
+                    <div class="card">
+                        <img src="https://i.postimg.cc/KYsv9hLp/Druidam1.png" alt="Druida">
+                        <h3>Druida</h3>
+                    </div>
+                    <div class="card">
+                        <img src="https://i.postimg.cc/q77vXvt3/Cacadorm1.png" alt="Caçador">
+                        <h3>Caçador</h3>
+                    </div>
+                    <div class="card">
+                        <img src="https://i.postimg.cc/SKKx7xX4/Berserkerm1.png" alt="Berserker">
+                        <h3>Berserker</h3>
+                    </div>
+                </div>
+
+                <button class="nav-btn next-btn" onclick="scrollCarousel('classes-track', 300)">&#10095;</button>
+            </div>
+        </section>
+
+        <section class="section-container">
+            <h2 class="section-title">As Sombras</h2>
+            <div class="carousel-wrapper">
+                <button class="nav-btn prev-btn" onclick="scrollCarousel('monsters-track', -300)">&#10094;</button>
+                
+                <div class="carousel-track" id="monsters-track">
+                    <div class="card monster-card">
+                        <img src="https://i.postimg.cc/FHhHP8H3/Dragao-Abyssal-Photoroom.png" alt="Dragão Abissal">
+                        <h3>Dragão Abissal</h3>
+                    </div>
+                    <div class="card monster-card">
+                        <img src="https://i.postimg.cc/kGWJXVHz/Rei-lich.png" alt="Rei Lich">
+                        <h3>Rei Lich</h3>
+                    </div>
+                    <div class="card monster-card">
+                        <img src="https://i.postimg.cc/W1Q80Gn9/Golem-De-Prata.png" alt="Golem de Prata">
+                        <h3>Golem de Prata</h3>
+                    </div>
+                    <div class="card monster-card">
+                        <img src="https://i.postimg.cc/65rQfttZ/Lobo-Sombrio-Photoroom.png" alt="Lobo Sombrio">
+                        <h3>Lobo Sombrio</h3>
+                    </div>
+                    <div class="card monster-card">
+                        <img src="https://i.postimg.cc/J4Nh5MMj/Ogro-Photoroom.png" alt="Ogro">
+                        <h3>Ogro de Elite</h3>
+                    </div>
+                    <div class="card monster-card">
+                        <img src="https://i.postimg.cc/P5d5695p/Bando-de-Goblins-Photoroom.png" alt="Bando de Goblins">
+                        <h3>Bando de Goblins</h3>
+                    </div>
+                    <div class="card monster-card">
+                        <img src="https://i.postimg.cc/RZvZPyZ3/Demonio-de-Lama-Photoroom.png" alt="Demônio de Lama">
+                        <h3>Demônio de Lama</h3>
+                    </div>
+                    <div class="card monster-card">
+                        <img src="https://i.postimg.cc/GmbmMVm4/Vinhas-Carnivoras-Photoroom.png" alt="Vinhas Carnívoras">
+                        <h3>Vinhas Carnívoras</h3>
+                    </div>
+                </div>
+
+                <button class="nav-btn next-btn" onclick="scrollCarousel('monsters-track', 300)">&#10095;</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Refügium. Todos os direitos reservados. Sobreviva se puder.</p>
+    </footer>
+
+    <script>
+        function scrollCarousel(trackId, amount) {
+            const track = document.getElementById(trackId);
+            track.scrollBy({
+                left: amount,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
