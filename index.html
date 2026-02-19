@@ -12,49 +12,53 @@
             padding: 0;
             box-sizing: border-box;
         }
+        
         body {
-            /* Fonte principal para o corpo do texto */
             font-family: 'Roboto', sans-serif;
             color: #d0d0d0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            /* IMAGEM DE FUNDO CORRIGIDA */
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('https://i.postimg.cc/qvJnNTHr/Cidade-Dia.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background-color: #050505; /* Fundo escuro para a rolagem */
         }
 
-        /* Container principal que centraliza o conteúdo na tela */
-        .main-container {
-            flex: 1;
+        /* CONFIGURAÇÃO DO FUNDO FIXO PARA A PÁGINA TODA */
+        .background-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('https://i.postimg.cc/qvJnNTHr/Cidade-Dia.png');
+            background-size: cover;
+            background-position: center;
+            z-index: -1; /* Fica atrás de tudo */
+        }
+
+        /* ---------------------------------------------------
+           SESSÃO HERO (Tela Inicial com Download)
+           --------------------------------------------------- */
+        .hero-section {
+            min-height: 100vh; /* Ocupa a tela toda inicialmente */
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
         }
 
-        /* O "cartão" translúcido onde o conteúdo fica */
         .content-box {
-            background-color: rgba(20, 20, 20, 0.85); /* Fundo escuro e transparente */
+            background-color: rgba(20, 20, 20, 0.85);
             padding: 50px;
             border-radius: 15px;
             text-align: center;
             border: 2px solid #3a3a3a;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
             max-width: 700px;
             width: 100%;
             backdrop-filter: blur(5px);
-            /* Garante que o conteúdo não ultrapasse a caixa */
             overflow-wrap: break-word; 
         }
 
-        /* Estilo do Título (Nome do Jogo) - COM TAMANHO ELÁSTICO */
         .game-title {
-            font-family: 'Cinzel Decorative', serif; /* Fonte de fantasia */
-            /* A função clamp define: (tamanho mínimo, tamanho ideal baseado na tela, tamanho máximo) */
-            font-size: clamp(1.8rem, 10vw, 4rem); 
+            font-family: 'Cinzel Decorative', serif;
+            font-size: clamp(2rem, 10vw, 4.5rem); 
             color: #ffffff;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -63,23 +67,20 @@
             line-height: 1.1;
         }
 
-        /* Subtítulo (Tagline) */
         .tagline {
             font-size: clamp(1.1rem, 4vw, 1.4rem);
-            color: #c62828; /* Vermelho sangue */
+            color: #c62828;
             font-style: italic;
             margin-bottom: 35px;
             text-shadow: 1px 1px 2px #000;
         }
 
-        /* Descrição do jogo */
         .game-description {
             font-size: 1.1rem;
             line-height: 1.7;
             margin-bottom: 45px;
         }
 
-        /* Estilo do Botão de Download */
         .download-btn {
             display: inline-block;
             background: linear-gradient(145deg, #d32f2f, #a61b1b);
@@ -94,6 +95,8 @@
             letter-spacing: 1px;
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(183, 28, 28, 0.5);
+            width: 100%;
+            max-width: 400px;
         }
 
         .download-btn:hover {
@@ -103,7 +106,6 @@
             border-color: #ff3f3f;
         }
 
-        /* Estilo para a área da música */
         .audio-player-container {
             margin-top: 40px;
             padding-top: 20px;
@@ -120,45 +122,127 @@
             font-style: italic;
         }
 
-        /* Customiza o player de áudio */
         audio {
             width: 100%;
             max-width: 300px;
             outline: none;
         }
 
+        /* ---------------------------------------------------
+           SESSÃO DE LORE E CLASSES
+           --------------------------------------------------- */
+        .info-section {
+            padding: 80px 20px;
+            background-color: rgba(10, 10, 10, 0.95); /* Fundo bem escuro para ler melhor */
+            border-top: 2px solid #222;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2.5rem;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px #000;
+        }
+
+        .section-divider {
+            width: 100px;
+            height: 3px;
+            background: #c62828;
+            margin: 0 auto 40px auto;
+        }
+
+        .lore-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* GRID DE CLASSES */
+        .classes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .class-card {
+            background: linear-gradient(to bottom, #1a1a1a, #0d0d0d);
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .class-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8);
+            border-color: #c62828;
+        }
+
+        .class-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            /* Se tiver ícones PNG depois, pode substituir esse texto por uma <img src=""> */
+        }
+
+        .class-name {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .class-desc {
+            font-size: 0.95rem;
+            color: #888;
+            line-height: 1.6;
+        }
+
         /* Rodapé simples */
         footer {
             text-align: center;
-            padding: 20px;
+            padding: 30px 20px;
             font-size: 0.9rem;
-            color: #888;
-            background-color: rgba(0, 0, 0, 0.8);
+            color: #666;
+            background-color: #000;
+            border-top: 1px solid #222;
         }
 
-        /* RESPONSIVIDADE PARA TELEMÓVEIS (ECRÃS MENORES) */
+        /* RESPONSIVIDADE PARA TELEMÓVEIS */
         @media (max-width: 768px) {
             .content-box {
-                padding: 30px 15px; /* Reduz o espaçamento interno lateral */
-            }
-
-            .game-description {
-                font-size: 1rem;
-                margin-bottom: 30px;
+                padding: 40px 15px; 
             }
 
             .download-btn {
                 padding: 15px 20px; 
                 font-size: 1.2rem;
-                display: block; 
-                width: 100%; /* Faz o botão preencher a largura no celular */
+            }
+
+            .section-title {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <main class="main-container">
+    <div class="background-wrapper"></div>
+
+    <section class="hero-section">
         <div class="content-box">
             <h1 class="game-title">Refügium</h1>
             <p class="tagline">Sua jornada começa nas sombras.</p>
@@ -167,22 +251,59 @@
                 Prepare-se para entrar neste universo sombrio. Clique no botão abaixo para baixar a versão mais recente e iniciar a sua jornada épica.
             </p>
 
-            <a href="https://drive.google.com/file/d/1LfNI0Pcc66Zk6CwddQNtO4IejibsCl9o/view?usp=drive_link" class="download-btn" target="_blank" rel="noopener noreferrer">
+            <a href="https://drive.google.com/file/d/1ZYNtGWHmUBEySlYCIHHzKoVTnXf5xWre/view?usp=drive_link" class="download-btn" target="_blank" rel="noopener noreferrer">
                 BAIXAR O JOGO
             </a>
 
             <div class="audio-player-container">
                 <p>Trilha Sonora Oficial</p>
-                <audio controls loop autoplay src="trilha.mp3?v=1">
+                <audio controls loop autoplay src="trilha1.mp3?v=1">
                     Seu navegador não suporta o elemento de áudio.
                 </audio>
             </div>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <div class="container">
+            
+            <h2 class="section-title">O Mundo de Refügium</h2>
+            <div class="section-divider"></div>
+            
+            <p class="lore-text">
+                As antigas lendas falam de uma cidade próspera, agora engolida por uma escuridão impiedosa. Criaturas outrora adormecidas caminham pelas ruas de pedra, e a magia corrompida infecta a terra. Como um dos poucos sobreviventes com coragem suficiente para empunhar uma arma, seu dever é desvendar os segredos do abismo e reivindicar o Refúgio que foi roubado.
+            </p>
+
+            <h2 class="section-title">Escolha seu Caminho</h2>
+            <div class="section-divider"></div>
+
+            <div class="classes-grid">
+                
+                <div class="class-card">
+                    <div class="class-icon">⚔️</div>
+                    <h3 class="class-name">Guerreiro de Ferro</h3>
+                    <p class="class-desc">Mestres do combate corpo a corpo. Utilizam armaduras pesadas e armas brutais para esmagar as forças das trevas e proteger seus aliados na linha de frente.</p>
+                </div>
+
+                <div class="class-card">
+                    <div class="class-icon">🏹</div>
+                    <h3 class="class-name">Rastreador Noturno</h3>
+                    <p class="class-desc">Ágeis e letais. Atacam de longe ou emboscam seus inimigos pelas costas. Especialistas em evasão e dano crítico quando o inimigo menos espera.</p>
+                </div>
+
+                <div class="class-card">
+                    <div class="class-icon">🔮</div>
+                    <h3 class="class-name">Mago Sombrio</h3>
+                    <p class="class-desc">Manipulam a própria corrupção que destruiu o mundo. Sacrificam sua vitalidade em troca de magias devastadoras de área e controle de grupo.</p>
+                </div>
+
+            </div>
 
         </div>
-    </main>
+    </section>
 
     <footer>
-        <p>&copy; 2026 Refügium. Todos os direitos reservados.</p>
+        <p>&copy; 2026 Refügium. Todos os direitos reservados. Junte-se à resistência.</p>
     </footer>
 
 </body>
